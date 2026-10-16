@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jogos educativos de Matemática para aprender brincando.">
+  <title>Jogos de Matemática</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#" id="home-link" aria-label="Página inicial">
+        <span class="brand-icon" aria-hidden="true">🔢</span>
+        <span>Jogos de Matemática</span>
+      </a>
+      <span class="header-note">Aprender brincando!</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="home-screen" class="screen">
+      <div class="welcome">
+        <div class="welcome-text">
+          <p class="eyebrow">BEM-VINDOS!</p>
+          <h1>Vamos aprender Matemática?</h1>
+          <p>Escolha um conteúdo e comece a jogar. Cada desafio é uma oportunidade de aprender!</p>
+        </div>
+        <div class="welcome-emoji" aria-hidden="true">🍎➗⭐</div>
+      </div>
+
+      <h2 class="section-title">Escolha um jogo</h2>
+
+      <div class="game-grid">
+        <article class="game-card division-card">
+          <div class="card-emoji" aria-hidden="true">🍎</div>
+          <div class="card-content">
+            <span class="card-tag">18 desafios</span>
+            <h3>Divisão das maçãs</h3>
+            <p>Arraste as maçãs para os cestos e reparta tudo igualmente.</p>
+            <button class="primary-button" id="open-division">
+              Jogar divisão <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="card-emoji" aria-hidden="true">✖️</div>
+          <div class="card-content">
+            <span class="card-tag">Em breve</span>
+            <h3>Multiplicação</h3>
+            <p>Um espaço para adicionar o jogo de multiplicação que você já criou.</p>
+            <button class="secondary-button" disabled>Em breve</button>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="card-emoji" aria-hidden="true">🧮</div>
+          <div class="card-content">
+            <span class="card-tag">Em breve</span>
+            <h3>Sistema de numeração</h3>
+            <p>Composição, decomposição e valor posicional dos números.</p>
+            <button class="secondary-button" disabled>Em breve</button>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="card-emoji" aria-hidden="true">➕</div>
+          <div class="card-content">
+            <span class="card-tag">Em breve</span>
+            <h3>Adição e subtração</h3>
+            <p>Novos desafios para praticar as operações matemáticas.</p>
+            <button class="secondary-button" disabled>Em breve</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="division-screen" class="screen hidden" aria-labelledby="division-title">
+      <button class="back-button" id="back-home">← Voltar aos jogos</button>
+
+      <div class="game-heading">
+        <div>
+          <p class="eyebrow">JOGO DE DIVISÃO</p>
+          <h1 id="division-title">🍎 Dividindo as maçãs</h1>
+          <p>Arraste cada maçã para um cesto. Todos os cestos devem ficar com a mesma quantidade.</p>
+        </div>
+
+        <div class="progress-box">
+          <span id="round-label">Desafio 1 de 18</span>
+          <div class="progress-track">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+          <span id="score-label">Acertos: 0</span>
+        </div>
+      </div>
+
+      <div class="problem-panel">
+        <div class="problem-number" id="apple-total">8 🍎</div>
+        <div class="problem-copy">
+          <h2 id="problem-title">Vamos repartir!</h2>
+          <p id="problem-instruction">Reparta 8 maçãs igualmente entre 2 cestos.</p>
+        </div>
+        <button class="small-button" id="reset-round">Recomeçar rodada</button>
+      </div>
+
+      <div class="apples-area">
+        <div class="area-heading">
+          <h2>Maçãs para repartir</h2>
+          <span id="remaining-label">Maçãs fora dos cestos: 8</span>
+        </div>
+        <div id="apple-pile" class="apple-pile" aria-label="Maçãs disponíveis para repartir"></div>
+        <p class="helper-text">Use o mouse para arrastar. Em tablets, toque em uma maçã e depois no cesto desejado.</p>
+      </div>
+
+      <div class="baskets-area">
+        <div class="area-heading">
+          <h2>Coloque nos cestos</h2>
+          <span id="basket-hint">Distribua igualmente</span>
+        </div>
+        <div id="basket-row" class="basket-row"></div>
+      </div>
+
+      <div class="game-actions">
+        <p id="feedback" class="feedback" role="status" aria-live="polite">Vamos começar! Coloque as maçãs nos cestos.</p>
+        <div class="action-buttons">
+          <button class="secondary-button" id="clear-baskets">Retirar todas</button>
+          <button class="primary-button" id="check-answer">Conferir divisão ✓</button>
+          <button class="primary-button hidden" id="next-round">Próximo desafio →</button>
+        </div>
+      </div>
+
+      <div id="finish-panel" class="finish-panel hidden">
+        <div class="finish-emoji" aria-hidden="true">🏆🍎</div>
+        <h2>Você concluiu os 18 desafios!</h2>
+        <p id="finish-message">Parabéns por praticar a divisão!</p>
+        <button class="primary-button" id="play-again">Jogar novamente</button>
+        <button class="secondary-button" id="finish-home">Voltar aos jogos</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Jogos de Matemática • Aprender brincando</p>
+  </footer>
+</body>
+</html>
